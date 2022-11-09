@@ -1,0 +1,25 @@
+---
+# tasks file for fedora
+- name: Remove unused packages
+  ansible.builtin.dnf:
+    name:
+      - cheese
+      - gnome-boxes
+      - gnome-contacts
+      - gnome-connections
+      - gnome-maps
+      - mediawriter
+    state: absent
+    autoremove: true
+
+- name: System update
+  ansible.builtin.dnf:
+    name: "*"
+    state: latest
+    update_cache: true
+    autoremove: true
+
+- name: Install packages
+  ansible.builtin.dnf:
+    name: neovim
+    state: latest

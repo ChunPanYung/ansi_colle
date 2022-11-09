@@ -1,0 +1,44 @@
+---
+# tasks file for ubuntu
+- name: Pre_tasks for role
+  block:
+    - name: Update repo cache (debian based OS)
+      ansible.builtin.apt:
+        update_cache: true
+      changed_when: false  # not considered change when cache is updated
+
+- name: Remove abomination
+  ansible.builtin.apt:
+    name: snapd
+    state: absent
+    purge: true
+
+- name: Remove packages
+  ansible.builtin.apt:
+    name:
+      - vim
+      - thunderbird
+      - kate
+    state: absent
+    purge: true
+
+- name: Install list of packages
+  ansible.builtin.apt:
+    name:
+      - neovim
+      - silversearcher-ag
+      - fd-find
+      - f2fs-tools
+      - nala
+      - git
+
+- name: Update packages and remove unused ones
+  ansible.builtin.apt:
+    upgrade: safe
+    autoremove: true
+  register: update_info
+  changed_when: "'following' in update_info.stdout"
+
+- name: Package Manager Output
+  ansible.builtin.debug:
+    var: update_info.stdout_lines[4:]

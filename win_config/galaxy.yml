@@ -1,0 +1,16 @@
+---
+namespace: ansi_colle
+name: win_config
+version: 1.0.0
+
+readme: README.md
+
+authors:
+  - Chun Pan Yung
+
+description: Contains various roles for windows configuration.
+license:
+  - GPL-2.0-or-later
+
+# The URL of the originating SCM repository
+repository: https://gitlab.com/ahhh-tomation/ansi_colle

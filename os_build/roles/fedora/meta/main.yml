@@ -1,0 +1,18 @@
+---
+galaxy_info:
+  author: Chun Pan Yung
+  description: minimal build of fedora for personal use
+
+  license: MIT
+
+  min_ansible_version: "2.12"
+
+  platforms:
+    - name: Fedora
+      versions:
+        - all
+
+  galaxy_tags:
+    - fedora
+
+dependencies: []

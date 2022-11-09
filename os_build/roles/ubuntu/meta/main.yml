@@ -1,0 +1,18 @@
+---
+galaxy_info:
+  author: Chun Pan Yung
+  description: Install & Remove packages only newly installed Ubuntu OS
+
+  license: MIT
+
+  min_ansible_version: "2.12"
+
+  platforms:
+    - name: Ubuntu
+      versions:
+        - all
+
+  galaxy_tags:
+    - ubuntu
+
+dependencies: []

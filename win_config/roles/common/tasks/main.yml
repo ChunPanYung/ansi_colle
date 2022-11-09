@@ -1,0 +1,10 @@
+---
+# win_config/tasks/
+- name: Setup ansible connection for windows machine
+  run_once: true
+  ansible.builtin.add_host:
+    groups: windows
+    ansible_connection: winrm
+    ansible_winrm_transport: certificate
+    ansible_winrm_server_cert_validation: ignore
+    ansible_become_method: runas

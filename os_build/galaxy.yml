@@ -1,0 +1,14 @@
+---
+namespace: ansi_colle
+name: os_build
+version: 1.0.0
+readme: README.md
+authors:
+  - Chun Pan Yung
+
+description: |
+  Collection of os build after freshly install OS.
+  It will add or remove packages.
+license:
+  - GPL-2.0-or-later
+repository: https://gitlab.com/ahhh-tomation/ansi_colle

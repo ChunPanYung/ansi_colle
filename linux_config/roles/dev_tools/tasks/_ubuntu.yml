@@ -1,0 +1,60 @@
+---
+# tasks file for dev_tools
+- name: Install dev tools
+  ansible.builtin.apt:
+    name:
+      - tmux
+      - tree
+
+- name: Install python tools
+  ansible.builtin.apt:
+    name:
+      - ipython3
+      - pylint
+      - pre-commit
+      - libsqlite3-dev  # needed for pre-commit
+      - trash-cli  # Moving file to trash instead of deletion.
+
+- name: Install programming languages
+  ansible.builtin.apt:
+    name: default-jre
+
+- name: Install dev kit
+  block:
+    - name: Install Rust
+      ansible.builtin.apt:
+        name:
+          - rustc
+          - cargo
+          - rustfmt
+
+    - name: Install docker dev kit
+      ansible.builtin.apt:
+        name:
+          - docker.io
+          - docker-compose
+
+    - name: Install ruby & gem
+      ansible.builtin.apt:
+        name:
+          - ruby
+          - ruby-dev
+
+- name: Install for web dev
+  block:
+    - name: Install nodejs & npm
+      ansible.builtin.apt:
+        name:
+          - nodejs
+          - npm
+
+    - name: Install npm packages
+      become: false
+      community.general.npm:
+        name: "{{ item }}"
+        global: true
+      loop:
+        - pyright
+        - standard
+        - typescript
+        - typescript-language-server
