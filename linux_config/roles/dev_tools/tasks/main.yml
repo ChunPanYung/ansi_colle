@@ -1,8 +1,4 @@
 ---
-- name: Include task list if OS family is Debian
-  ansible.builtin.include_tasks: _ubuntu.yml
-  when: ansible_os_family == "Debian"
-
 - name: Create directory
   become: false
   ansible.builtin.file:

@@ -58,3 +58,6 @@
         - standard
         - typescript
         - typescript-language-server
+
+- name: Install dev tools
+  ansible.builtin.include_tasks: _ubuntu.yml

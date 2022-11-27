@@ -40,5 +40,6 @@
   changed_when: "'following' in update_info.stdout"
 
 - name: Package Manager Output
+  tags: dev_tools
   ansible.builtin.debug:
     var: update_info.stdout_lines[4:]

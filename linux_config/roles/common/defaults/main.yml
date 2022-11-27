@@ -1,3 +1,0 @@
----
-# roles/common/defaults
-nvim_path: "/usr/bin/nvim"
