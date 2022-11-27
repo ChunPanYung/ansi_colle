@@ -1,0 +1,53 @@
+---
+# common/tasks
+- name: Change visudo setting
+  ansible.builtin.copy:
+    src: defaults
+    dest: /etc/sudoers.d
+    owner: root
+    group: root
+    mode: '0640'
+
+- name: Change visudo setting
+  ansible.builtin.copy:
+    src: tmpdirs.conf
+    dest: /etc/tmpfiles.d
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Install ansible & linter.
+  block:
+    - name: Add ansible ppa
+      ansible.builtin.apt_repository:
+        repo: 'ppa:ansible/ansible'
+        update_cache: true
+
+    - name: Install ansible & related packages
+      ansible.builtin.apt:
+        name:
+          - ansible
+          - yamllint
+
+    - name: Install pipx
+      ansible.builtin.apt:
+        name: pipx
+
+    - name: Install ansible-lint
+      become: false
+      community.general.pipx:
+        name: ansible-lint
+
+- name: Download and setup Neovim AppImage
+  ansible.builtin.get_url:
+    url: https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+    dest: /usr/local/bin
+    mode: '0755'
+    owner: root
+    group: root
+
+- name: Setup Ctrl-Backspace to delete word
+  ansible.builtin.lineinfile:
+    path: "/home/{{ ansible_uesr }}/.inputrc"
+    regexp: '^"\C-h"'
+    line: '"\C-h": backward-kill-word'
