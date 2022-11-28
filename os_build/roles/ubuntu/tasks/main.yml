@@ -26,8 +26,6 @@
   ansible.builtin.apt:
     name:
       - neovim
-      - silversearcher-ag
-      - fd-find
       - f2fs-tools
       - nala
       - git
