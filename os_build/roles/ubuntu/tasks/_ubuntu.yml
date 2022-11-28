@@ -21,13 +21,6 @@
 
 - name: Install dev kit
   block:
-    - name: Install Rust
-      ansible.builtin.apt:
-        name:
-          - rustc
-          - cargo
-          - rustfmt
-
     - name: Install docker dev kit
       ansible.builtin.apt:
         name:

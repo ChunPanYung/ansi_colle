@@ -7,3 +7,17 @@
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
     mode: '0750'
+
+- name: Install Rust
+  ansible.builtin.apt:
+    name:
+      - rustc
+      - cargo
+      - rustfmt
+
+- name: Install fd and rg from Rust
+  community.general.cargo:
+    name:
+      - fd-find
+      - ripgrep
+    state: present
