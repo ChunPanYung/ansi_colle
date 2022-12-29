@@ -18,7 +18,6 @@
     name:
       - vim
       - thunderbird
-      - kate
     state: absent
     purge: true
 
