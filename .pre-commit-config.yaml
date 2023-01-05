@@ -14,7 +14,7 @@ repos:
       - id: mixed-line-ending
       - id: trailing-whitespace
   - repo: https://github.com/ansible/ansible-lint
-    rev: v6.10.0
+    rev: v6.10.2
     hooks:
       - id: ansible-lint
         verbose: true  # Display warning messages even there is no failure.
